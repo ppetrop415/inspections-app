@@ -1,13 +1,15 @@
 <template>
   <page>
     <page-body>
-      <div class="full-width q-px-md">
+      <div class="full-width">
         <q-input
           borderless
           v-model="text"
           placeholder="Αναζήτησε με ΑΦΜ"
-          :dense="dense"
-          class="full-width q-pa-xs"
+          dense
+          rounded
+          outlined
+          class="full-width q-pa-sm"
         >
           <template v-slot:append>
             <q-icon

@@ -1,9 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-footer bordered class="bg-white text-primary lt-sm">
+    <q-footer bordered class="bg-white">
       <q-tabs
         no-caps
-        active-color="dark"
+        align="justify"
+        active-color="primary"
         indicator-color="transparent"
         class="text-grey"
       >

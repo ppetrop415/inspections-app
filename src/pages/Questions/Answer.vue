@@ -2,7 +2,7 @@
   <page>
     <page-header>
       <template #buttons-left>
-        <page-header-btn-back label="Questions" />
+        <page-header-btn-back />
       </template>
       <template #title>Answer</template>
     </page-header>
@@ -51,8 +51,8 @@
               style="border-radius: 30px"
               icon="error"
               label="Counter"
-              header-class="bg-primary text-white"
-              expand-icon-class="text-white"
+              header-class="bg-white text-primary"
+              expand-icon-class="text-primary"
             >
               <q-card
                 v-for="i in 10"
