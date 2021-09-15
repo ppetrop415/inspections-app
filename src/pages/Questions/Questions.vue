@@ -33,7 +33,7 @@
       <q-card class="my-card q-ma-xs">
         <q-item @click="confirm = true" clickable v-ripple>
           <q-item-section top avatar>
-            <q-avatar color="grey" text-color="white" icon="local_cafe" />
+            <q-avatar color="primary" text-color="white" icon="local_cafe" />
           </q-item-section>
           <q-item-section>
             <q-item-label>Cafe Cafe</q-item-label>
