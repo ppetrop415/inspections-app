@@ -124,7 +124,13 @@ export default {
       confirm: ref(false),
       model: ref(null),
 
-      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
+      options: [
+        "Κυριακάκη Σοφία",
+        "Τασιόπουλος Αλκιβιάδης",
+        "Μητσιώνης Σπυρίδων",
+        "Φακίνου Νεκταρία",
+        "Ζήκα Αφροδίτη",
+      ],
     };
   },
 };

@@ -22,17 +22,17 @@ const routes = [
       },
       {
         path: "/new-inspection",
-        component: () => import("pages/Questions/Questions.vue"),
+        component: () => import("pages/NewInspection/Questions.vue"),
         children: [
           {
             path: "/new-inspection/answer",
-            component: () => import("pages/Questions/Answer.vue"),
+            component: () => import("pages/NewInspection/Answer.vue"),
           },
         ],
       },
       {
         path: "/images",
-        component: () => import("pages/Images/Images.vue"),
+        component: () => import("pages/Profile/Images.vue"),
       },
     ],
   },
