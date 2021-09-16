@@ -2,9 +2,17 @@
   <page>
     <page-header>
       <template #buttons-left>
-        <page-header-btn-back />
+        <q-btn color="teal" label="Σκόρ: 256" rounded no-caps />
       </template>
-      <template #title>Answer</template>
+      <template #title
+        ><span class="text-dark text-weight-bolder">S</span>any<span
+          class="text-primary text-weight-bolder"
+          >H</span
+        >ealth</template
+      >
+      <template #buttons-right>
+        <q-btn color="primary" label="submit" rounded />
+      </template>
     </page-header>
     <page-body>
       <div class="page-body-spacer-header"></div>
@@ -15,10 +23,11 @@
               <q-item-section>
                 <q-item-label caption>Επωνυμία</q-item-label>
                 <q-item-label>Cafe Cafe</q-item-label>
-                <q-item-label caption>Ιδιοκτήτης</q-item-label>
-                <q-item-label>Παπαδόπουλος Νικόλαος </q-item-label>
                 <q-item-label caption>Διεύθυνση </q-item-label>
                 <q-item-label>Βεακη 45, 10458, Περιστέρι </q-item-label>
+                <q-item-label caption>Ιδιοκτήτης</q-item-label>
+                <q-item-label>Παπαδόπουλος Νικόλαος </q-item-label>
+
                 <q-item-label caption>Υγειονομικός Υπεύθυνος</q-item-label>
 
                 <q-item-label>Παπαδόπουλος Νικόλαος </q-item-label>
@@ -34,11 +43,6 @@
                 <q-item-label>15815854</q-item-label>
                 <q-item-label caption>ΑΦΜ</q-item-label>
                 <q-item-label>058789568</q-item-label>
-
-                <div caption>
-                  Σκορ:
-                  <q-badge color="teal" label="256" />
-                </div>
               </q-item-section>
             </q-item>
           </q-card-section>
@@ -49,11 +53,17 @@
               :key="i"
               class="shadow-4 q-mb-sm overflow-hidden"
               style="border-radius: 30px"
-              icon="error"
-              label="Counter"
-              header-class="bg-white text-primary"
+              header-class="text-grey-8"
               expand-icon-class="text-primary"
             >
+              <template v-slot:header>
+                <q-item-section avatar>
+                  <q-icon name="info" />
+                </q-item-section>
+
+                <q-item-section> Wifi settings {{ i }} </q-item-section>
+              </template>
+
               <q-card
                 v-for="i in 10"
                 :key="i"
@@ -64,12 +74,11 @@
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
                   unde natus distinctio sint molestiae qui officia, quisquam
                   vero a fuga. Nisi enim, non eaque vel magni tempore laborum
-                  voluptas totam! Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Incidunt blanditiis neque iure earum tenetur
-                  officia animi cum. Cum eius quod minima est harum aliquid,
-                  iste vel vero perferendis impedit et?
+                  voluptas totam!
                 </q-card-section>
-                <q-card-section class="col-sm-4 col-md-3 col-12">
+                <q-card-section
+                  class="col-sm-4 col-md-3 col-12 flex flex-center"
+                >
                   <q-btn-toggle
                     v-model="model"
                     toggle-color="primary"
@@ -80,7 +89,9 @@
                     ]"
                   />
                 </q-card-section>
-                <q-card-section class="col-sm-4 col-md-3 col-12 q-gutter-sm">
+                <q-card-section
+                  class="col-sm-4 col-md-3 col-12 q-gutter-sm flex flex-center"
+                >
                   <q-btn round color="info" icon="info" />
                   <q-btn round color="primary" icon="edit" />
                   <q-btn round color="positive" icon="done" />

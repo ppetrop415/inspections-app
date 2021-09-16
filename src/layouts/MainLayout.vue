@@ -3,7 +3,6 @@
     <q-footer bordered class="bg-white">
       <q-tabs
         no-caps
-        align="justify"
         active-color="primary"
         indicator-color="transparent"
         class="text-grey"

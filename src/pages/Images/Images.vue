@@ -1,7 +1,12 @@
 <template>
   <page>
     <page-header>
-      <template #title>Profile</template>
+      <template #title
+        ><span class="text-dark text-weight-bolder">S</span>any<span
+          class="text-primary text-weight-bolder"
+          >H</span
+        >ealth</template
+      >
     </page-header>
     <page-body>
       <div class="page-body-spacer-header"></div>
@@ -71,11 +76,11 @@
 
         <q-item clickable v-ripple>
           <q-item-section avatar top>
-            <q-avatar icon="assignment" color="grey" text-color="white" />
+            <q-avatar icon="settings" color="grey" text-color="white" />
           </q-item-section>
 
           <q-item-section>
-            <q-item-label lines="1">My favorite song</q-item-label>
+            <q-item-label lines="1">Settings</q-item-label>
             <q-item-label caption>Singing it all day</q-item-label>
           </q-item-section>
 
@@ -84,13 +89,13 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item to="/login" clickable v-ripple>
           <q-item-section avatar top>
-            <q-avatar icon="assignment" color="grey" text-color="white" />
+            <q-avatar icon="logout" color="grey" text-color="white" />
           </q-item-section>
 
           <q-item-section>
-            <q-item-label lines="1">My favorite song</q-item-label>
+            <q-item-label lines="1">Log Out</q-item-label>
             <q-item-label caption>Singing it all day</q-item-label>
           </q-item-section>
 

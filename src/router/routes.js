@@ -10,7 +10,7 @@ const routes = [
         children: [
           {
             path: "/home/child",
-            component: () => import("pages/Home/Child.vue"),
+            component: () => import("src/pages/Home/ViewInspection.vue"),
             children: [
               {
                 path: "/home/child/grandchild",
@@ -33,6 +33,17 @@ const routes = [
       {
         path: "/images",
         component: () => import("pages/Images/Images.vue"),
+      },
+    ],
+  },
+
+  {
+    path: "/",
+    component: () => import("layouts/LoginLayout.vue"),
+    children: [
+      {
+        path: "/login",
+        component: () => import("pages/Users/Login.vue"),
       },
     ],
   },

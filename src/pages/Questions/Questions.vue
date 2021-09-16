@@ -62,11 +62,31 @@
           </q-card-section>
           <q-separator inset />
 
-          <q-card-section class="row items-center">
+          <q-card-section class="row">
             <span class="q-ml-sm text-justify"
               >Είσαι σίγουρος ότι θες να ξεκινήσεις εναν νέο υγειονομικό έλεγχο
-              για αυτό το κατάστημα ;</span
+              για αυτό το κατάστημα;</span
             >
+          </q-card-section>
+
+          <q-separator inset />
+
+          <q-card-section class="row flex flex-center">
+            <span class="q-mb-md">
+              <strong> Επέλεξε Συνεργάτη για να συνεχίσεις</strong></span
+            >
+
+            <q-select
+              outlined
+              v-model="model"
+              :options="options"
+              class="full-width"
+              label="Συνεργάτης"
+            >
+              <template v-slot:prepend>
+                <q-icon name="person" />
+              </template>
+            </q-select>
           </q-card-section>
 
           <q-card-actions align="right">
@@ -102,6 +122,9 @@ export default {
       text: ref(""),
       dense: ref(true),
       confirm: ref(false),
+      model: ref(null),
+
+      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
     };
   },
 };

@@ -14,10 +14,12 @@
     <div class="q-toolbar row no-wrap items-center">
       <slot name="buttons-left" />
       <div
-        class="page-header-title q-toolbar__title ellipsis text-body1 q-pl-none"
+        class="page-header-title q-toolbar__title ellipsis text-h6 q-pl-none"
       >
         <slot name="title" />
       </div>
+      <q-space />
+      <slot name="buttons-right" />
     </div>
   </header>
 </template>

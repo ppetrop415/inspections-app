@@ -4,7 +4,12 @@
       <template #buttons-left>
         <page-header-btn-back />
       </template>
-      <template #title>Child</template>
+      <template #title
+        ><span class="text-dark text-weight-bolder">S</span>any<span
+          class="text-primary text-weight-bolder"
+          >H</span
+        >ealth</template
+      >
     </page-header>
     <page-body>
       <div class="page-body-spacer-header"></div>
@@ -63,8 +68,6 @@
                 <q-item-label>15815854</q-item-label>
                 <q-item-label caption>ΑΦΜ</q-item-label>
                 <q-item-label>058789568</q-item-label>
-                <q-item-label caption>Σκορ</q-item-label>
-                <q-badge color="teal" label="256" />
               </q-item-section>
             </q-item>
           </q-card-section>
@@ -185,7 +188,7 @@ const rows = [
 ];
 
 export default {
-  name: "Child",
+  name: "ViewInspection",
   setup() {
     return {
       model: ref(null),

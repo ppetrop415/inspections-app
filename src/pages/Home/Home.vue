@@ -1,7 +1,12 @@
 <template>
   <page>
     <page-header>
-      <template #title>SanyHealth</template>
+      <template #title
+        ><span class="text-dark text-weight-bolder">S</span>any<span
+          class="text-primary text-weight-bolder"
+          >H</span
+        >ealth</template
+      >
     </page-header>
     <page-body>
       <div class="page-body-spacer-header"></div>
