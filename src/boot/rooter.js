@@ -6,6 +6,14 @@ let routerInstance = null;
 export default boot(({ router }) => {
   routerInstance = router;
 
+  router.beforeEach((to, from) => {
+    if (to.meta.requiresAuth) {
+      return {
+        path: "/login",
+      };
+    }
+  });
+
   router.afterEach((to, from) => {
     let fromRootPath = `/${from.path.split("/")[1]}`,
       toRootPath = `/${to.path.split("/")[1]}`;

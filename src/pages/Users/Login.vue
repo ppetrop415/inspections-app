@@ -16,20 +16,36 @@
           <form>
             <q-input
               outlined
-              v-model="text"
+              v-model="email"
+              autocomplete="email"
               placeholder="E-mail"
               class="q-mb-sm"
+              type="email"
             >
               <template v-slot:prepend>
                 <q-icon name="mail" />
               </template>
             </q-input>
-            <q-input outlined v-model="text" placeholder="Password">
+            <q-input
+              outlined
+              v-model="password"
+              autocomplete="current-password"
+              placeholder="Password"
+              type="password"
+            >
               <template v-slot:prepend>
                 <q-icon name="lock" />
               </template>
+              <template v-slot:append>
+                <q-icon name="visibility" />
+              </template>
             </q-input>
-            <q-btn class="full-width q-mt-lg" to="/home" color="primary" rounded
+            <q-btn
+              class="full-width q-mt-lg"
+              :loading="isLoading"
+              @click="submit"
+              color="primary"
+              rounded
               >Login</q-btn
             >
           </form>
@@ -46,14 +62,75 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Login",
-  setup() {
+  data() {
     return {
-      text: ref(""),
+      email: "",
+      password: "",
+      loading: false,
     };
+  },
+  computed: {
+    ...mapState("auth", ["isLoading"]),
+  },
+  methods: {
+    ...mapActions("auth", ["signIn"]),
+    ...mapActions("inspections", ["getInspections"]),
+
+    async submit() {
+      this.$store.commit("auth/setIsLoading", true);
+      this.$api.defaults.headers.common["Authorization"] = "";
+      localStorage.removeItem("token");
+
+      const formData = {
+        email: this.email,
+        password: this.password,
+      };
+
+      await this.signIn(formData)
+        .then(() => {})
+        .catch();
+
+      await this.getInspections().then(this.$router.push("/home"));
+
+      await this.$api
+        .post("auth/login/", formData)
+        .then((response) => {
+          const token = response.data.access;
+          const user = {
+            id: response.data.user.id,
+            email: response.data.user.email,
+            first_name: response.data.user.first_name,
+            last_name: response.data.user.last_name,
+          };
+
+          this.$api.defaults.headers.common["Authorization"] =
+            "Bearer " + token;
+
+          localStorage.setItem("token", token);
+          localStorage.setItem("email", response.data.user.email);
+          localStorage.setItem("user_id", response.data.user.id);
+          localStorage.setItem("first_name", response.data.user.first_name);
+          localStorage.setItem("last_name", response.data.user.last_name);
+
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+
+      await this.$api.get("inspections/completed").then((response) => {
+        this.$store.commit("inspections/setInspections", response.data);
+
+        console.log(response.data);
+        this.$router.push("/home");
+      });
+
+      this.$store.commit("auth/setIsLoading", false);
+    },
   },
 };
 </script>

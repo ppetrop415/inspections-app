@@ -7,14 +7,21 @@ const routes = [
       {
         path: "/home",
         component: () => import("pages/Home/Home.vue"),
+        name: "home",
+        meta: { requiresAuth: false },
+        props: true,
         children: [
           {
             path: "/home/child",
             component: () => import("src/pages/Home/ViewInspection.vue"),
+            meta: { requiresAuth: false },
+            name: "inspection-detail",
+            props: true,
             children: [
               {
                 path: "/home/child/grandchild",
                 component: () => import("pages/Home/Grandchild.vue"),
+                meta: { requiresAuth: true },
               },
             ],
           },
@@ -23,27 +30,32 @@ const routes = [
       {
         path: "/new-inspection",
         component: () => import("pages/NewInspection/Questions.vue"),
+        meta: { requiresAuth: false },
         children: [
           {
             path: "/new-inspection/answer",
             component: () => import("pages/NewInspection/Answer.vue"),
+            meta: { requiresAuth: false },
           },
         ],
       },
       {
         path: "/images",
         component: () => import("pages/Profile/Images.vue"),
+        meta: { requiresAuth: false },
       },
     ],
   },
 
   {
-    path: "/",
+    path: "/login",
     component: () => import("layouts/LoginLayout.vue"),
+
     children: [
       {
         path: "/login",
         component: () => import("pages/Users/Login.vue"),
+        name: "login",
       },
     ],
   },

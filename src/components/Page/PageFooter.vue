@@ -7,7 +7,7 @@
       class="text-grey"
     >
       <q-route-tab
-        v-for="navItem in store.state.navItems"
+        v-for="navItem in navItems"
         :key="navItem.root"
         :to="navItem.to"
         :icon="navItem.icon"
@@ -17,15 +17,12 @@
 </template>
 
 <script>
-import store from "src/myStore";
+import { mapState } from "vuex";
 
 export default {
   name: "PageFooter",
-
-  setup() {
-    return {
-      store,
-    };
+  computed: {
+    ...mapState("navItems", ["navItems"]),
   },
 };
 </script>
