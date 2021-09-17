@@ -46,6 +46,7 @@ export default {
       await Inspection.getAll()
         .then((response) => {
           commit("setInspections", response.data);
+          console.log(response.data);
         })
         .catch((e) => {
           console.log(e);

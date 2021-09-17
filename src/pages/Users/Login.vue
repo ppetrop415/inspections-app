@@ -81,53 +81,13 @@ export default {
     ...mapActions("inspections", ["getInspections"]),
 
     async submit() {
-      this.$store.commit("auth/setIsLoading", true);
-      this.$api.defaults.headers.common["Authorization"] = "";
-      localStorage.removeItem("token");
-
       const formData = {
         email: this.email,
         password: this.password,
       };
 
-      await this.signIn(formData)
-        .then(() => {})
-        .catch();
-
+      await this.signIn(formData);
       await this.getInspections().then(this.$router.push("/home"));
-
-      await this.$api
-        .post("auth/login/", formData)
-        .then((response) => {
-          const token = response.data.access;
-          const user = {
-            id: response.data.user.id,
-            email: response.data.user.email,
-            first_name: response.data.user.first_name,
-            last_name: response.data.user.last_name,
-          };
-
-          this.$api.defaults.headers.common["Authorization"] =
-            "Bearer " + token;
-
-          localStorage.setItem("token", token);
-          localStorage.setItem("email", response.data.user.email);
-          localStorage.setItem("user_id", response.data.user.id);
-          localStorage.setItem("first_name", response.data.user.first_name);
-          localStorage.setItem("last_name", response.data.user.last_name);
-
-          console.log(response.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-
-      await this.$api.get("inspections/completed").then((response) => {
-        this.$store.commit("inspections/setInspections", response.data);
-
-        console.log(response.data);
-        this.$router.push("/home");
-      });
 
       this.$store.commit("auth/setIsLoading", false);
     },
