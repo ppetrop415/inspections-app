@@ -1,6 +1,6 @@
 // import axios from "@/api/axios";
 
-import Inspection from "src/services/inspection";
+import Inspection from "../services/inspection";
 // import Auth from "@/services/auth";
 
 export default {
@@ -23,17 +23,24 @@ export default {
       localStorage.setItem("inspection", JSON.stringify(inspection));
     },
 
-    initializeStore(state) {
+    initializeInspections(state) {
       if (localStorage.getItem("inspections")) {
         state.inspections = JSON.parse(localStorage.getItem("inspections"));
       } else {
         state.inspections = null;
       }
     },
+    initializeInspection(state) {
+      if (localStorage.getItem("inspection")) {
+        state.inspection = JSON.parse(localStorage.getItem("inspection"));
+      } else {
+        state.inspection = null;
+      }
+    },
   },
   actions: {
-    async getInspection({ commit }, uuid) {
-      await Inspection.get(uuid)
+    getInspection({ commit }, uuid) {
+      Inspection.get(uuid)
         .then((response) => {
           commit("setInspection", response.data);
         })
@@ -42,8 +49,8 @@ export default {
         });
     },
 
-    async getInspections({ commit }) {
-      await Inspection.getAll()
+    getInspections({ commit }) {
+      Inspection.getAll()
         .then((response) => {
           commit("setInspections", response.data);
           console.log(response.data);

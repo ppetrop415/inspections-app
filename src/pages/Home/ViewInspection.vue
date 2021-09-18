@@ -21,9 +21,7 @@
             <q-item>
               <q-item-section>
                 <q-item-label caption>UUID</q-item-label>
-                <q-item-label
-                  >d24dd339-6241-44cc-909f-e90fab42edd9</q-item-label
-                >
+                <q-item-label>{{ this.uuid }}</q-item-label>
                 <q-item-label caption>Επιθεωρητής 1</q-item-label>
                 <q-item-label>Παπαδόπουλος Νικόλαος </q-item-label>
                 <q-item-label caption>Επιθεωρητής 2</q-item-label>
@@ -76,7 +74,6 @@
             <div class="text-h5 text-center q-my-md">Αποτελέσματα Ελέγχου</div>
             <q-table
               :grid="$q.screen.xs"
-              :rows="rows"
               :columns="columns"
               row-key="name"
               flat
@@ -103,7 +100,9 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapState } from "vuex";
+import axios from "../../api/axios";
+// import store from "../../store";
 
 export default {
   name: "ViewInspection",
@@ -142,7 +141,18 @@ export default {
     this.getInspection(this.uuid);
   },
   methods: {
-    ...mapActions("inspection", ["getInspection"]),
+    // ...mapActions("inspections", ["getInspection"]),
+
+    getInspection(data) {
+      axios
+        .get(`${END_POINT}completed/${data}/`)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

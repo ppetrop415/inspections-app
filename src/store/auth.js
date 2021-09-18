@@ -1,4 +1,4 @@
-// import axios from "@/api/axios";
+import axios from "../api/axios";
 
 // import Inspection from "@/services/inspection";
 import Auth from "src/services/auth";
@@ -76,12 +76,6 @@ export default {
 
           commit("setToken", token);
           commit("setUser", user);
-
-          localStorage.setItem("token", token);
-          localStorage.setItem("email", response.data.user.email);
-          localStorage.setItem("user_id", response.data.user.id);
-          localStorage.setItem("first_name", response.data.user.first_name);
-          localStorage.setItem("last_name", response.data.user.last_name);
 
           console.log(response.data);
         })

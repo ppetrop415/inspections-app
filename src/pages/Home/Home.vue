@@ -14,10 +14,9 @@
       <q-card
         v-for="(inspection, index) in inspections.results"
         :key="index"
-        class="my-card q-ma-xs"
-        @click="viewInspection(inspection)"
+        class="q-ma-xs"
       >
-        <q-item clickable v-ripple>
+        <q-item @click="viewInspection(inspection)" clickable v-ripple>
           <q-item-section top avatar>
             <q-avatar color="primary" text-color="white" icon="local_cafe" />
           </q-item-section>
